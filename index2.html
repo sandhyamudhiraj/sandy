@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Songs</title>
+</head>
+<body>
+
+  <h3>Arijit Singh</h3>
+
+  <!-- Audio Player (Give it correct ID and no typo) -->
+  <audio id="audioPlayer" controls>
+    <source src="Nuvve Nuvve.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <br><br>
+
+  <!-- Buttons to Control -->
+  <button onclick="playSong()">▶️ Play</button>
+  <button onclick="pauseSong()">⏸️ Pause</button>
+  <button onclick="playNext()">⏭️ Next</button>
+
+  <script>
+    // ✅ Full song list
+    const songs = [
+      "Nuvve Nuvve.mp3",
+      "Yedhaki Oka Gaayam.mp3",
+      "Tum Hi Ho.mp3",
+      "Channa Mereya.mp3",
+      "Raabta - Agent Vinod.mp3",
+      "Kesariya Brahmastr.mp3",
+      "Agar Tum Saath Ho.mp3",
+      "Tera Yaar Hoon Main.mp3",
+      "Shayad (Reprise) - Love Aaj Kal.mp3"
+    ];
+
+    let currentIndex = 0;
+    const audio = document.getElementById("audioPlayer");
+
+    function playSong() {
+      audio.play();
+    }
+
+    function pauseSong() {
+      audio.pause();
+    }
+
+    function playNext() {
+      currentIndex = (currentIndex + 1) % songs.length;
+      audio.src = songs[currentIndex];
+      audio.load();
+      audio.play();
+    }
+
+    // ✅ Auto-play next song when current song ends
+    audio.addEventListener("ended", function () {
+      playNext();
+    });
+  </script>
+  <ul>
+    <li>Nuvve Nuvve</li>
+    <li>Yedhaki Oka Gaayam</li>
+    <li>Tum Hi Ho</li>
+    <li>Channa Mereya</li>
+    <li>Raabta - Agent Vinod</li>
+    <li>BraKesariyahmastr</li>
+    <li>Agar Tum Saath Ho</li>
+    <li>Tera Yaar Hoon Main</li>
+    <li>Shayad (Reprise) - Love Aaj Kal</li>
+  </ul>
+
+</body>
+</html>
